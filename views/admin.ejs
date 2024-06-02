@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Bright Coder</title>
+    <link
+      rel="shortcut icon"
+      href="../image/channel logo.jpg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
+  <body>
+    
+    <h1>Admin Page</h1>
+    <% if (users != "") { %>
+     <table>
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Cpassowrd</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach((user,index) => { %>
+             <tr>
+                <td><%= index+1 %></td>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td><%= user.password %></td>
+                <td><%= user.confirm_password %></td>
+                <td>
+                    <a href="/edit/<%= user._id %>">Update</a>
+                    <a href="/edit/<%= user._id %>">Delete</a>
+                </td>
+             </tr>
+            <% }) %>
+        </tbody>
+     </table>
+    <% } %>
+    <script src="admin.js"></script>
+  </body>
+</html>
