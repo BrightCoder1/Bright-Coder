@@ -48,26 +48,26 @@ userSchema.methods.comparePassword = async function(password){
 }
 
 
-// // generate token
-// userSchema.methods.generateToken = async function(){
-//     try {
-//         const token = await jwt.sign({
-//             _id:this._id.toString(),
-//         },
-//         process.env.SECRETKEY,
-//         {
-//             expiresIn:"1d"
-//         }
-//     );
-//     // Store token
-//     this.tokens = this.tokens.concat({token:token});
-//     await this.save();
-//     // console.log(token);
-//     return token;
-//     } catch (error) {
-//         console.log(error,"TOKEN ERROR!");
-//     }
-// }
+// generate token
+userSchema.methods.generateToken = async function(){
+    try {
+        const token = await jwt.sign({
+            _id:this._id.toString(),
+        },
+        process.env.SECRETKEY,
+        {
+            expiresIn:"1d"
+        }
+    );
+    // Store token
+    this.tokens = this.tokens.concat({token:token});
+    await this.save();
+    // console.log(token);
+    return token;
+    } catch (error) {
+        console.log(error,"TOKEN ERROR!");
+    }
+}
 
 
 const Register = new mongoose.model("RegisterUser",userSchema);
