@@ -37,12 +37,12 @@ app.post("/register", async (req, res) => {
           password: req.body.password,
           confirm_password: req.body.confirm_password,
         });
-        // generate token
-        const token = await userEneter.generateToken();
-        res.cookie("Register Cookie",token,{
-          expires: new Date(Date.now() + 60000),
-          httpOnly:true
-        });
+        // // generate token
+        // const token = await userEneter.generateToken();
+        // res.cookie("Register Cookie",token,{
+        //   expires: new Date(Date.now() + 60000),
+        //   httpOnly:true
+        // });
 
         const usersave = await userEneter.save();
         console.log(usersave);
@@ -76,12 +76,12 @@ app.post("/login", async (req, res) => {
 
   // password compare
   const user = await userExist.comparePassword(password);
-  const token = await userExist.generateToken();
-  console.log(token);
-  res.cookie("Login Cookies",token,{
-    expires: new Date(Date.now() + 60000),
-    httpOnly:true
-  })
+  // const token = await userExist.generateToken();
+  // console.log(token);
+  // res.cookie("Login Cookies",token,{
+  //   expires: new Date(Date.now() + 60000),
+  //   httpOnly:true
+  // })
   if (user) {
     res.status(200).redirect("/");
   } else {
