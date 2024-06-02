@@ -102,6 +102,7 @@
 
     .contact {
         flex-direction: column;
+        height: 120vh;
     }
     #course-heading {
         font-size: 2rem;
